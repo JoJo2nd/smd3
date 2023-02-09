@@ -4,6 +4,11 @@
 //#define SMD_PLATFORM_MACOS
 //#define SMD_PLATFORM_ etc, etc
 
+#if defined(_WIN32)
+#   define PLATFORM_WINDOWS
+#endif
+
+
 #if defined (PLATFORM_MACOS)
 #  define SMD_PLATFORM_USE_POSIX
 #endif
