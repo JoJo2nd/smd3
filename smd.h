@@ -75,6 +75,8 @@ uint32_t __inline smd_clz64(uint64_t value)
 #endif
 
 #define smd_make_fourCC(a,b,c,d) (uint32_t)( (((uint32_t)d&0xFF) << 24) | (((uint32_t)c&0xFF) << 16) | (((uint32_t)b&0xFF) << 8) | (((uint32_t)a&0xFF)))
+#define smd_max(a,b) (((a) > (b)) ? (a) : (b))
+#define smd_min(a,b) (((a) < (b)) ? (a) : (b))
 
 //
 

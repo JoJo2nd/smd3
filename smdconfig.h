@@ -11,8 +11,8 @@
 #  error Platform not defined
 #endif
 
-#if defined (PLATFORM_MACOS)
-#  define SMD_PLATFORM_USE_POSIX
+#if defined (SMD_PLATFORM_MACOS)
+#  define SMD_PLATFORM_USE_POSIX (1)
 #endif
 
 #if SMD_PLATFORM_WINDOWS
