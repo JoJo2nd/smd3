@@ -2,7 +2,7 @@
     Written by James Moran
     Please see the file LICENSE.txt in the repository root directory.
 *********************************************************************/
-#ifndef SMD_UNITY_BUILD
+#ifdef SMD_UNITY_BUILD
 
 #include "minfs.h"
 #include "minfs_common.h"

@@ -10,7 +10,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-enum ErrorCodes{
+typedef enum ErrorCodes{
     OK                         =  0,
     ATTRIBUTE_READ_FAILED      = 0x80000001,
     NO_MEM                     = 0x80000002,

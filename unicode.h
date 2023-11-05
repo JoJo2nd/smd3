@@ -1,5 +1,7 @@
 #pragma once
 
+#include "smdconfig.h"
+
 #include <stdio.h>
 #include <stdint.h>
 

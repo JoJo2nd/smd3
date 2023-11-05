@@ -1,10 +1,11 @@
 
 #include "smdconfig.h"
 
-#ifdef SMD_UNITY_BUILD
-
-// allow .c files to compile
-#undef SMD_UNITY_BUILD
+#if SMD_IMPLEMENTATION
+#define SMD_SOCK_IMPL
+#define SMD_THREAD_IMPL
+#define SMD_PROCESS_IMPL
+#endif
 
 #ifdef SMD_PLATFORM_WINDOWS
 // for, probably legit, reasons winsock2 must come before windows.h
@@ -12,7 +13,7 @@
 #include <windows.h>
 #endif
 
-
+#define SMD_UNITY_BUILD
 #include "getopt.c"
 #include "minfs_common.c"
 #ifdef SMD_PLATFORM_USE_POSIX
@@ -20,18 +21,11 @@
 #elif SMD_PLATFORM_WINDOWS
 #include "minfs_win.c"
 #endif
+#undef SMD_UNITY_BUILD
 
-#define SMD_SOCK_IMPL
 #include "sock.h"
-
-#define SMD_THREAD_IMPL
 #include "thread.h"
-
-#define SMD_PROCESS_IMPL
 #include "smd_proc.h"
-
-#define SMD_UNITY_BUILD 
-#endif //SMD_UNITY_BUILD
 
 // Here until i find a better place
 #include <string.h>

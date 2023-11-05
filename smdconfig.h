@@ -1,19 +1,27 @@
 
-//TODO: detect platform and define the following
-//#define SMD_PLATFORM_WINDOWS
-//#define SMD_PLATFORM_MACOS
-//#define SMD_PLATFORM_ etc, etc
+
+#if SMD_PLATFORM_WINDOWS
+#  define SMD_PLATFORM_DEFINED (1)
+#elif SMD_PLATFORM_MACOS
+#  define SMD_PLATFORM_DEFINED (1)
+#endif
+//#define SMD_PLATFORM_LINUX
+
+#if !SMD_PLATFORM_DEFINED
+#  error Platform not defined
+#endif
 
 #if defined (PLATFORM_MACOS)
 #  define SMD_PLATFORM_USE_POSIX
 #endif
 
-#if defined(_WIN32)
-#  if defined(libsmd_EXPORTS)
-#    define SMD_API __declspec(dllexport)
-#  else
-#    define SMD_API __declspec(dllimport)
-#  endif
+#if SMD_PLATFORM_WINDOWS
+#  define SMD_API
+//#  if defined(libsmd_EXPORTS)
+//#    define SMD_API __declspec(dllexport)
+//#  else
+//#    define SMD_API __declspec(dllimport)
+//#  endif
 #else // non windows
 #  define SMD_API
 #endif

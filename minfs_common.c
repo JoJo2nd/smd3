@@ -2,6 +2,7 @@
     Written by James Moran
     Please see the file LICENSE.txt in the repository root directory.
 *********************************************************************/
+#ifdef SMD_UNITY_BUILD
 
 #include "minfs.h"
 #include "minfs_common.h" 
@@ -12,7 +13,7 @@ void utf8_to_uc2(const char* src, minfs_uint16_t* dst, size_t len) {
     len -= sizeof(minfs_uint16_t);   /* save room for null char. */
     while (len >= sizeof(minfs_uint16_t))
     {
-        minfs_uint32_t cp = utf8_codepoint(src, dst);
+        size_t cp = utf8_codepoint(src, dst);
         if (cp == 0)
             break;
 
@@ -130,3 +131,4 @@ size_t minfs_path_join(const char* parent, const char* leaf, char* out_path, siz
     out_path[leaf_len + parent_len + 1] = 0;
     return leaf_len+parent_len+1;
 }
+#endif //SMD_UNITY_BUILD
