@@ -67,6 +67,13 @@ uint32_t __inline smd_clz64(uint64_t value)
 }
 #endif
 
+#if SMD_PLATFORM_MACOS
+#define smd_ctz __builtin_ctz
+#define smd_clz __builtin_clz
+#define smd_ctz64 __builtin_ctzll
+#define smd_clz64 __builtin_clzll
+#endif
+
 #define smd_make_fourCC(a,b,c,d) (uint32_t)( (((uint32_t)d&0xFF) << 24) | (((uint32_t)c&0xFF) << 16) | (((uint32_t)b&0xFF) << 8) | (((uint32_t)a&0xFF)))
 
 //
